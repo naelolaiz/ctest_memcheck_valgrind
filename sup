@@ -1,0 +1,19 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:_ZN7myClass6uninitEvnatanael
+   ...
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:_Znwm
+   ...
+   fun:_ZN7myClass4leakEv
+   ...
+   fun:main
+}
