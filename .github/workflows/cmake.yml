@@ -21,6 +21,16 @@ jobs:
     
     - name: install valgrind
       run: sudo apt-get install -y valgrind
+      
+    - name: Cache suppressions logs
+      id: cache_suppression_logs
+      uses: actions/cache@v3
+      with:
+        path: ${{github.workspace}}/build/MemcheckLogs
+        key: ${{ runner.os }}-memchecklogs      
+        
+    - name: check cached files
+      run: ls -lR ${{github.workspace}}
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
