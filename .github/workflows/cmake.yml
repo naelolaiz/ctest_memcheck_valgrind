@@ -42,7 +42,7 @@ jobs:
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail      
-      run: ctest -C ${{env.BUILD_TYPE}} -T MemCheck -VV
+      run: ctest -C ${{env.BUILD_TYPE}} -T MemCheck -VV -LE skip
       #continue-on-error: true
       
     - name: rename and publish memcheck logs
