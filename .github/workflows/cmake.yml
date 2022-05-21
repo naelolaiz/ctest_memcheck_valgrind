@@ -55,4 +55,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: memcheck-logs
-        path: ${{github.workspace}}/build/MemcheckLogs/*.log
+        path: ${{github.workspace}}/build/MemcheckLogs
