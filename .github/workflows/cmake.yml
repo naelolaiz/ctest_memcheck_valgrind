@@ -43,3 +43,16 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail      
       run: ctest -C ${{env.BUILD_TYPE}} -T MemCheck -VV
       continue-on-error: true
+      
+    - name: rename and publish memcheck logs
+      if: ${{ failure() }}
+      working-directory: ${{github.workspace}}/scripts
+      run: |
+       mkdir ${{github.workspace}}/build/MemcheckLogs
+       ./copy_and_rename_failed_memcheck_logs.py ${{github.workspace}}/build ${{github.workspace}}/build/MemcheckLogs
+       
+    - name: publish artifacts with memcheck logs
+      uses: actions/upload-artifact@v3
+      with:
+        name: memcheck-logs
+        path: ${{github.workspace}}/build/MemcheckLogs/*.log
