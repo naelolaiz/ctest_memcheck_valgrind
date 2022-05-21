@@ -19,6 +19,7 @@ int main()
     myClass a;
     a.leak();
     int i=a.uninit();
-    std::cout << " hola" << i<< std::endl;
+    (void)i;
+    std::cout << " hola" << std::endl;
     return 0;
 }
