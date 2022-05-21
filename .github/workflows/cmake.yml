@@ -45,14 +45,14 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}} -T MemCheck -VV -LE skip
       #continue-on-error: true
       
-    - name: rename and publish memcheck logs
+    - name: rename memcheck logs
       if: ${{ failure() }} && steps.memcheck_test.outcome == 'failure'
       working-directory: ${{github.workspace}}/scripts
       run: |
        mkdir ${{github.workspace}}/build/MemcheckLogs
        ./copy_and_rename_failed_memcheck_logs.py ${{github.workspace}}/build ${{github.workspace}}/build/MemcheckLogs
        
-    - name: publish artifacts with memcheck logs
+    - name: publish memcheck logs as artifacts
       if: ${{ failure() }} && steps.memcheck_test.outcome == 'failure'
       uses: actions/upload-artifact@v3
       with:
