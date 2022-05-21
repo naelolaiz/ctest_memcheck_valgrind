@@ -34,7 +34,7 @@ def rename_and_copy_failed_memcheck_log_files(tests, memcheck_logs_dir, output_d
             print ("Valgrind issues found on {}. Moving it to {}".format(file, output_file))
             shutil.copyfile(file, output_file)
         else:
-            print("test {} has no errors".format(file))
+            print("No valgrind issues found on {}".format(file))
 
 if __name__ == "__main__":
     if len(sys.argv) < 3: 
