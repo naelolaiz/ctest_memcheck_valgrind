@@ -31,7 +31,7 @@ def rename_and_copy_failed_memcheck_log_files(tests, memcheck_logs_dir, output_d
             raise Exception("error on filename {}".format(file))
         if hasErrors:
             output_file = os.path.join(output_dir, "MemoryChecker.{}.log".format(tests[int(match.groups()[0])]))
-            print ("error on file {}. Moving it to {}".format(file, output_file))
+            print ("Valgrind issues found on {}. Moving it to {}".format(file, output_file))
             shutil.copyfile(file, output_file)
         else:
             print("test {} has no errors".format(file))
